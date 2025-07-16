@@ -1,0 +1,344 @@
+/* Common styles for both light mode and dark mode */
+body {
+    font-family: Google Sans, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s;
+}
+
+.box {
+    display: flex;
+}
+
+.box {
+    background-color: #00000041;
+    color: black;
+}
+
+.ach {
+    width: 247px;
+    height: 586px;
+    border: 0px solid #b92e2e;
+    border-radius: 10px;
+    padding: 0px 7px;
+    column-span: all;
+    display: inline-block;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    /* Ensure content doesn't overflow */
+    position: relative;
+    /* Establish positioning context */
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
+.ach h4{
+    margin-top: 10px;
+}
+
+.ach li {
+    margin-left: -20px;
+}
+
+.ach img {
+    margin-left: -15px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 1105px;
+    height: 587px;
+    margin: 0px auto;
+    margin-right: 0;
+    margin-top: 0;
+    padding: 0px;
+    background-color: #f0f0f062;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.left-pane {
+    flex: 1;
+    padding: 20px;
+}
+
+.right-pane {
+    flex: 2;
+    padding: 20px;
+}
+
+.chat-box {
+    height: 450px;
+    width: 1060px;
+    margin-right: 0px;
+    margin-left: -375px;
+    overflow-y: scroll;
+    padding: 0px;
+    background-color: #f0f0f0;
+    /* Default background color */
+    border-radius: 10px;
+    border-color: black;
+}
+
+.user-input {
+    display: flex;
+    width: 1075px;
+    margin-top: 10px;
+    margin-left: -380px;
+    margin-right: 0px;
+}
+
+.dark-mode {
+    background-color: rgb(23, 23, 23);
+    /* Define your desired dark background color */
+    color: #fff;
+
+    /* Define your desired dark text color */
+    /* Apply dark mode styles to other elements as needed */
+    .container {
+        background-color: #5a5a5a;
+        /* Optional dark background for container */
+    }
+
+    .ach {
+        background-color: rgba(255, 255, 255, 0.349);
+        /* Optional dark background for container */
+    }
+
+    .chat-box {
+        background-color: #444;
+        /* Optional dark background for chat-box */
+    }
+
+    .send-button {
+        background-color: #808080;
+        color: whitesmoke;
+    }
+
+    .user-message {
+        background-color: #808080;
+        color: whitesmoke;
+    }
+
+    .message-input {
+        background-color: #ffffffbd;
+        color: #fff;
+        border: 0px;
+    }
+    .sq h4{
+        color: black;
+    }
+    /* ... apply dark styles to other elements ... */
+}
+
+.message-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    background-color: #f5f5f5;
+    /* Default background color */
+    color: #333;
+    /* Default text color */
+}
+
+.send-button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #665e5e;
+    /* Default button background color */
+    color: #fff;
+    /* Default button text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s;
+}
+
+.send-button:hover {
+    background-color: #555555d5;
+    /* Hover background color */
+}
+
+.header {
+    text-align: left;
+    margin-bottom: 20px;
+    margin-left: -50px;
+    font-size: 24px;
+    background: linear-gradient(to left, #c54c4c, #4e4ac5, #bd7b19);
+    background-size: 5000% auto;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: grad 10s reverse infinite;
+}
+
+@keyframes grad {
+    0% {
+        background-position: 0% 200%;
+    }
+
+    12% {
+        background-position: 50% 100%;
+    }
+
+    25% {
+        background-position: 100% 50%;
+    }
+
+    50% {
+        background-position: 200% 0%;
+    }
+
+    75% {
+        background-position: 100% 50%;
+    }
+
+    87% {
+        background-position: 50% 100%;
+    }
+
+    100% {
+        background-position: 0% 200%;
+    }
+}
+
+.toggle {
+    position: fixed;
+    top: 20px;
+    right: 40px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.toggle-input {
+    display: none;
+}
+
+.toggle-label {
+    margin-top: 0px;
+    margin-right: 0px;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+/* .toggle-thumb {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+    display: none;
+} */
+
+/* .toggle-thumb::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    border-radius: 50%;
+    transform: translate(0, -50%);
+    transition: transform 0.3s;
+} */
+
+.toggle-input:checked+.toggle-label+.toggle-thumb {
+    background-color: #8d8d8d;
+    /* Dark mode switch background color */
+}
+
+.toggle-input:checked+.toggle-label+.toggle-thumb::after {
+    transform: translate(20px, -50%);
+    /* Move the thumb to the right in dark mode */
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.bot-message {
+    margin: 5px 0;
+    padding: 10px;
+    background-color: grey;
+    /* Default bot message background color */
+    color: #fff;
+    /* Default bot message text color */
+    border-radius: 5px;
+}
+
+.user-message {
+    margin: 5px 0;
+    padding: 10px;
+    background-color: grey;
+    /* Default user message background color */
+    color: #fff;
+    /* Default user message text color */
+    border-radius: 5px;
+    text-align: right;
+}
+
+.sq{
+    margin-top: 309px;
+    font-size: 20px;
+    margin-left: 0px;
+    border-color: black;
+}
+
+.q1{
+    margin-top: 0px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 250px;
+    text-align: center;
+    
+}
+
+.q2{
+    margin-top: -122px;
+    margin-left: 255px;
+    cursor: pointer;
+    width: 250px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.q3 {
+    margin-top: -121px;
+    margin-left: 515px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 250px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.q4 {
+    margin-top: -121px;
+    margin-left: 765px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 250px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.sq h4{
+    color: rgb(0, 0, 0);
+}
+
+.mic{
+    background-color: rgba(0, 0, 0, 0.411);
+    transition: background-color 0.3s;
+}
+
+.mic:hover{
+    background-color: #000000be;
+}

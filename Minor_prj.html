@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI COLLEGE DOUBT SOLVER</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("1000001074-01.png");
+            background-size: 1350px 900px;
+            background-position: center;
+        }
+
+        #ach-con {
+            width: 480px;
+            height: 430px;
+            margin: 0px 55px 0px 60px;
+            border: 2px solid #7FC7D9;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            columns: 100px 1;
+        }
+
+        #ach {
+            height: 430px;
+            overflow-y: scroll;
+            overflow-x: scroll;
+            padding: 0px 10px;
+            background-color: #FFEEBB;
+            column-span: all;
+            display: block;
+        }
+
+        #ach::-webkit-scrollbar {
+            background-color: white;
+            border-radius: 20px;
+        }
+
+        #ach::-webkit-scrollbar-thumb {
+            background: linear-gradient(to right, #FB8B24, #7E30E1);
+            border-radius: 20px;
+        }
+
+        #chat-container {
+            max-width: 1100px;
+            height: 430px;
+            margin: 0px 100px 30px 10px;
+            /* Adjusted margin values */
+            border: 2px solid #7FC7D9;
+            border-radius: 20px;
+            overflow: hidden;
+            width: 110%;
+            display: inline-block;
+        }
+
+        #chat-box {
+            height: 370px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            padding: 5px;
+            background-color: #FFEEBB;
+        }
+
+        #chat-box::-webkit-scrollbar {
+            background-color: white;
+            border-radius: 20px;
+        }
+
+        #chat-box::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #7E30E1, #FB8B24);
+            border-radius: 20px;
+        }
+
+        #user-input {
+            display: flex;
+            padding: 5px 10px;
+            background-color: #DCF2F1;
+            width: 98%;
+            height: 42px;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #message-input {
+            flex: 3;
+            margin-right: 0px;
+            border-radius: 15px;
+            /* Rounded corners */
+            background: linear-gradient(to right, #A7ECEE, #D5F0C1);
+            transition: 1s ease-in-out;
+        }
+
+        #message-input:hover {
+            background: linear-gradient(to right, #D5F0C1, #A7ECEE);
+        }
+
+        #send-button {
+            cursor: pointer;
+            font-size: 20px;
+            padding: 1px 1px;
+            height: 40px;
+            width: 50px;
+            margin-left: 25px;
+            padding: 0.3em 0.5em;
+            border-radius: 15px;
+            background-color: #D5F0C1;
+            transition: background 0.3s linear;
+        }
+
+        #send-button:hover {
+            background-color: #A7ECEE;
+        }
+
+        #hh {
+            text-align: right;
+            padding: 10px 390px;
+            color: red;
+            font-size: 21px;
+        }
+
+        .ac-ai {
+            magrin-top: 20px;
+        }
+
+        #photo {
+            height: 0px;
+            width: auto;
+        }
+
+        .ac-ai img {
+            height: auto;
+            width: 200px;
+            padding: 5px 60px;
+        }
+
+        .box {
+            display: flex;
+        }
+
+        .t {
+            padding: 10px 5px;
+        }
+
+        nav {
+            background-color: #1F6E8C;
+            color: #fff;
+            padding: 0.4em;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 5;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            padding: 0.6em 1em;
+            border-radius: 20px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            background-color: #B80000;
+            /* Darker color on hover */
+        }
+
+        /* Customized form input */
+        #user-input input {
+            padding: 10px;
+            border: 2px solid #1F6E8C;
+            border-radius: 20px;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        #user-input input:focus {
+            border-color: #155B75;
+            /* Darker color on focus */
+        }
+
+        .card {
+            width: 200px;
+            height: 190px;
+            perspective: 1000px;
+            /* Add 3D perspective to the card container */
+        }
+
+        .card-inner {
+            width: 90%;
+            height: 80%;
+            transform-style: preserve-3d;
+            transition: transform 0.7s;
+        }
+
+        .card:hover .card-inner {
+            transform: rotateY(190deg);
+            /* Flip the card on hover */
+        }
+
+        /* Card faces */
+        .card-face {
+            width: 90%;
+            height: 90%;
+            position: absolute;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 10px rgba(2, 2, 250, 0.7);
+            transform: rotateX(7deg);
+        }
+
+        .card-front {
+            background-color: #fff;
+        }
+
+        .card-back {
+            background-color: #f0f0f0;
+            transform: rotateY(180deg);
+            /* Initially rotate the back face */
+            box-shadow: 0 5px 10px rgba(200, 5, 5, 0.7);
+        }
+
+        /* Content styles */
+        .card-content {
+            padding: 0px;
+        }
+
+        .card-content p {
+            color: #000;
+        }
+
+        #image45 {
+            margin-bottom: 195px;
+            height: 1px;
+            width: auto;
+        }
+
+        .user-message {
+            color: #000;
+            display: flex;
+            margin-top: 240px;
+        }
+
+        .user-message div {
+            padding: 0;
+        }
+
+        .user-message div button {
+            background-color: #FFEEBB;
+            background-size: 10px;
+            border: 2px solid blue;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .user-message div button:hover {
+            border-radius: 15px;
+            border: 2px solid green;
+            background-color: #F3CCF3;
+        }
+
+        .user-message div p {
+            font-size: 14px;
+        }
+
+        h1 {
+            font-size: 35px;
+            margin-top: 5px;
+            background: linear-gradient(to left, #B80000, #0802A3, #F49D1A);
+            background-size: 2000% auto;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: gr 10s backwards infinite;
+        }
+
+        @keyframes gr {
+            0% {
+                background-position: 0% 75%;
+            }
+
+            12% {
+                background-position: 25% 50%;
+            }
+
+            25% {
+                background-position: 50% 30%;
+            }
+
+            50% {
+                background-position: 200% 100%;
+            }
+
+            75% {
+                background-position: 50% 30%;
+            }
+
+            87% {
+                background-position: 25% 50%;
+            }
+
+            100% {
+                background-position: 0% 75%;
+            }
+        }
+
+        /* body::-webkit-scrollbar {
+            background-color: transparent;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: linear-gradient(to top, #7E30E1, #FB8B24);
+            border-radius: 20px;
+        } */
+
+        marquee {
+            font-size: 20px;
+            background: linear-gradient(to right, purple, orange);
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ac-ai">
+        <div id="photo">
+            <img src="Acropolis logo.png" alt="College Photo">
+        </div>
+        <div id="hh"><strong>समाधान (AI College Doubt Solver)</strong></div>
+        <div class="t">
+            <nav>
+                <ul>
+                    <li><a href="https://aitr.ac.in/" target="_blank">About AITR</a></li>
+                    <li><a href="C:\Users\hp\Desktop\contact.html" target="_blank">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="box">
+            <div id="ach-con">
+                <div id="ach">
+                    <h4>Achievements of the college</h4>
+                    <ul type="disc">
+                        <li>Highest Package :- 45 lakh</li>
+                        <br>
+                        <div class="card">
+                            <div class="card-inner">
+                                <div class="card-face card-front">
+                                    <div class="card-content">
+                                        <div id="image45">
+                                            <img src="unknown.png" alt="45 Lakh Person">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-face card-back">
+                                    <div class="card-content">
+                                        <p>Unknown 45 Lakh Person</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <!-- <li>Best Education</li>
+                            <br>
+                            <li>Best Education</li>
+                            <br>
+                            <li>Best Education</li>
+                            <br>
+                            <li>Best Education</li>
+                            <br>
+                            <li>Best Education</li> -->
+                    </ul>
+                </div>
+            </div>
+
+            <div id="chat-container">
+                <div id="chat-box">
+                    <h1 id="initial-message">&#10023 Hello, How can I help you ?</h1>
+                    <id="help-message" class="user-message">
+                        <div>
+                            <button>
+                                <p>About Fee Structure</p>
+                            </button>
+                            <button>
+                                <p>About Bus Route</p>
+                            </button>
+                            <button>
+                                <p>About Placements</p>
+                            </button>
+                        </div>
+                </div>
+                <div id="user-input">
+                    <input type="text" id="message-input" placeholder="Ask your query here...">
+                    <button id="send-button" onclick="sendMessage()">&#8682;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            var userInput = document.getElementById("message-input").value;
+            var chatBox = document.getElementById("chat-box");
+            var helpMessage = document.getElementById("help-message");
+            helpMessage.style.opacity = 0;
+            chatBox.innerHTML += '<p>User: ' + userInput + '</p>';
+            var botResponse = "I'm just a simple chatbot.";
+            chatBox.innerHTML += '<p>Chatbot: ' + botResponse + '</p>';
+            document.getElementById("message-input").value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+            setTimeout(function () {
+                helpMessage.style.opacity = 1;
+            }, 500);
+            var initialMessage = document.getElementById("initial-message");
+            if (initialMessage) {
+                initialMessage.remove();
+            }
+        }
+    </script>
+
+    <strong>&copy; 2023 समाधान (AI College Doubt Solver)</strong>
+    <br><br>
+    <marquee>Imp. Notice</marquee>
+</body>
+
+</html>
